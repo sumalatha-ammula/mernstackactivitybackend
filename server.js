@@ -1,0 +1,44 @@
+import express from "express";
+import notesRoutes from './routes/notesRoutes.js'
+import {connectDB}  from './config/db.js';
+import dotenv from "dotenv";
+import cors from "cors"
+
+
+
+const app = express();
+dotenv.config();
+app.use(express.json());
+app.use(
+    cors({
+    origin:"http://localhost:5173",
+})
+);
+// app.use(rateLimiter);
+
+app.use("/api/notes",notesRoutes);
+app.use((req,res,next)=>{
+    console.log("we get new request");
+    next();
+
+})
+console.log(process.env.MONGO_URI)
+
+connectDB().then(()=>{
+    app.listen(5001,()=>{
+    console.log("Server is running")
+
+});
+
+})
+
+
+// app.get("/",(req,res)=>{
+// res.send("Hello this is sumalathaAkhilss");
+// });
+
+// app.post("/",(req,res)=>{
+// res.send("Hello this is sumalathaAkhilss");
+// });
+
+
