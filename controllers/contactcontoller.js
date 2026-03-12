@@ -49,9 +49,9 @@ const skip = (page - 1) * limit
 
 const contacts = await Contact
 .find()
-.skip(skip)
-.limit(limit)
-.sort({ createdAt: -1 })
+  .sort({ createdAt: -1 })
+  .skip(skip)
+  .limit(limit)
 
 const total = await Contact.countDocuments()
 
