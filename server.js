@@ -12,7 +12,7 @@ dotenv.config();
 app.use(express.json());
 app.use(
     cors({
-    origin:"http://localhost:5173",
+    origin:"https://mernstackactivityfrontend.onrender.com",
 })
 );
 // app.use(rateLimiter);
