@@ -7,6 +7,7 @@ import cors from "cors"
 
 
 const app = express();
+const port = process.env.PORT || 5001
 dotenv.config();
 app.use(express.json());
 app.use(
@@ -25,7 +26,7 @@ app.use((req,res,next)=>{
 console.log(process.env.MONGO_URI)
 
 connectDB().then(()=>{
-    app.listen(5001,()=>{
+    app.listen(port,()=>{
     console.log("Server is running")
 
 });
